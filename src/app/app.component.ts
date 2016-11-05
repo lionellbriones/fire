@@ -24,7 +24,7 @@ export class AppComponent {
       }
     )
 
-    this.lesson$ = af.database.object('lessons/-KVLg-pSEo-rzpB-zbG1');
+    this.lesson$ = af.database.object('lessons/-KVLg-pTqHdvILT9yNZO');
 
     this.lesson$.subscribe(console.log);
   }
@@ -45,5 +45,17 @@ export class AppComponent {
     this.courses$.update(this.lastCourse, {
       description: 'Modified'
     })
+  }
+
+  objUpdate() {
+    this.lesson$.update({description: 'New Description'});
+  }
+
+  objSet() {
+    this.lesson$.set({description: 'New Description'});
+  }
+
+  objRemove() {
+    this.lesson$.remove();
   }
 }
