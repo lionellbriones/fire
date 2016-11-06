@@ -14,12 +14,16 @@ import { HomeComponent } from './home/home.component';
 
 import { LessonsService } from './shared/model/lessons.service';
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LessonsListComponent
+    LessonsListComponent,
+    TopMenuComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
