@@ -13,8 +13,9 @@ import { CoursesService } from '../shared/model/courses.service';
 })
 export class CourseDetailComponent implements OnInit {
 
+  courseUrl: string;
   course$: Observable<Course>;
-  lessons$: Observable<Lesson[]>;
+  lessons: Lesson[];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,11 +23,23 @@ export class CourseDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const courseUrl = this.route.snapshot.params['id'];
+    this.courseUrl = this.route.snapshot.params['id'];
+    this.course$ = this.coursesService.findCourseByUrl(this.courseUrl);
+    const lessons$ = this.coursesService.loadFirstLessonsPage(this.courseUrl, 3);
 
-    this.course$ = this.coursesService.findCourseByUrl(courseUrl);
+    lessons$.subscribe(lessons => this.lessons = lessons)
+  }
 
-    this.lessons$ = this.coursesService.findLessonsForCourse(courseUrl);
+  nextPage() {
+    this.coursesService.loadNextPage(
+      this.courseUrl,
+      this.lessons[this.lessons.length - 1].$key,
+      3
+    ).subscribe(lessons => this.lessons = lessons);
+  }
+
+  previous() {
+
   }
 
 }
