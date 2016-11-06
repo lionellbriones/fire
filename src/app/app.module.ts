@@ -13,9 +13,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { LessonsService } from './shared/model/lessons.service';
+import { CoursesService } from './shared/model/courses.service';
+
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,15 @@ import { CoursesComponent } from './courses/courses.component';
     HomeComponent,
     LessonsListComponent,
     TopMenuComponent,
-    CoursesComponent
+    CoursesComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routerConfig),
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [LessonsService],
+  providers: [LessonsService, CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
