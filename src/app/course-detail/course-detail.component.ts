@@ -38,8 +38,12 @@ export class CourseDetailComponent implements OnInit {
     ).subscribe(lessons => this.lessons = lessons);
   }
 
-  previous() {
-
+  previousPage() {
+    this.coursesService.loadPreviousPage(
+      this.courseUrl,
+      this.lessons[0].$key,
+      3
+    ).subscribe(lessons => this.lessons = lessons);
   }
 
 }
