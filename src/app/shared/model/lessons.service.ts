@@ -14,4 +14,14 @@ export class LessonsService {
       .map(Lesson.fromJsonList);
   }
 
+  findLessonByUrl(lessonUrl: string): Observable<Lesson>{
+    console.log(lessonUrl);
+    return this.af.database.list('lessons', {
+      query: {
+        orderByChild: 'url',
+        equalTo: lessonUrl
+      }
+    }).map(results => Lesson.fromJson(results[0]));
+  }
+
 }
