@@ -22,7 +22,7 @@ export class LessonDetailComponent implements OnInit {
 
     const lesson$ = this.lessonService.findLessonByUrl(lessonUrl);
 
-    lesson$.subscribe(lesson => this.lesson = lesson);
+    lesson$.do(console.log).subscribe(lesson => this.lesson = lesson);
   }
 
 }
