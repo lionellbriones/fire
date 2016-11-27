@@ -19,4 +19,16 @@ export class NewLessonComponent implements OnInit {
     console.log(this.courseId);
   }
 
+  save(form) {
+
+    this.lessonService.createNewLesson(this.courseId, form.value)
+      .subscribe(
+        () => {
+          alert("Lesson created successfully. Create another lesson?");
+          form.reset();
+        },
+        err => alert(`Error creating lesson ${err}`)
+      );
+  }
+
 }

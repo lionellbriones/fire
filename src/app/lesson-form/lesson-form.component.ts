@@ -28,4 +28,16 @@ export class LessonFormComponent implements OnInit {
       && this.form.controls[field].errors[error];
   }
 
+  reset() {
+    this.form.reset();
+  }
+
+  get valid(){
+    return this.form.valid;
+  }
+
+  get value(){
+    return this.form.value;
+  }
+
 }
