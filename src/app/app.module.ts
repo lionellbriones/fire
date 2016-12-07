@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 
 import { LessonsService } from './shared/model/lessons.service';
 import { CoursesService } from './shared/model/courses.service';
+import { LessonResolver } from './shared/model/lesson.resolver';
 
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
@@ -24,6 +25,7 @@ import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 import { SafeUrlPipe } from './shared/security/safe-url.pipe';
 import { NewLessonComponent } from './new-lesson/new-lesson.component';
 import { LessonFormComponent } from './lesson-form/lesson-form.component';
+import { EditLessonComponent } from './edit-lesson/edit-lesson.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { LessonFormComponent } from './lesson-form/lesson-form.component';
     LessonDetailComponent,
     SafeUrlPipe,
     NewLessonComponent,
-    LessonFormComponent
+    LessonFormComponent,
+    EditLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ import { LessonFormComponent } from './lesson-form/lesson-form.component';
     AngularFireModule.initializeApp(firebaseConfig),
     ReactiveFormsModule
   ],
-  providers: [LessonsService, CoursesService],
+  providers: [LessonsService, CoursesService, LessonResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

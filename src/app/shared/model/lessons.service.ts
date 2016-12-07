@@ -23,7 +23,10 @@ export class LessonsService {
         orderByChild: 'url',
         equalTo: lessonUrl
       }
-    }).map(results => Lesson.fromJson(results[0]));
+    })
+    .filter(results => results && results.length > 0)
+    .map(results => Lesson.fromJson(results[0]))
+    .do(console.log);
   }
 
   loadNextLesson(courseId: string, key: string): Observable<Lesson>{
