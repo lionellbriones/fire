@@ -56,14 +56,24 @@ export class LessonsService {
   }
 
   createNewLesson(courseId: string, lesson:any): Observable<any>{
-    const lessonsToSave = Object.assign({}, lesson, {course: courseId});
+    const lessonToSave = Object.assign({}, lesson, {course: courseId});
 
     const newLessonKey = this.sdkDb.child('lessons').push().key;
 
     let dataToSave = {};
 
-    dataToSave['lessons/' + newLessonKey] = lessonsToSave;
+    dataToSave['lessons/' + newLessonKey] = lessonToSave;
     dataToSave[`lessonsPerCourse/${courseId}/${newLessonKey}`] = true;
+
+    return this.firebaseUpdate(dataToSave);
+  }
+
+  saveLesson(lessonId: string, lesson): Observable<any>{
+    const lessonToSave = Object.assign({}, lesson);
+    delete(lessonToSave.$key);
+
+    let dataToSave = {};
+    dataToSave['lessons/' + lessonId] = lessonToSave;
 
     return this.firebaseUpdate(dataToSave);
   }
